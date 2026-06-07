@@ -26,7 +26,6 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -95,10 +94,7 @@
       margin-bottom: 1.5rem;
       color: var(--ink);
     }
-    .hero-name em {
-      font-style: italic;
-      color: var(--terracotta);
-    }
+    .hero-name em { font-style: italic; color: var(--terracotta); }
     .hero-bio {
       font-size: 1.05rem;
       color: var(--ink-muted);
@@ -119,43 +115,49 @@
       text-decoration: none;
       transition: all 0.2s;
     }
-    .btn-primary {
-      background: var(--terracotta);
-      color: #fff;
-      border: none;
-    }
+    .btn-primary { background: var(--terracotta); color: #fff; border: none; }
     .btn-primary:hover { background: #a84a2c; transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent;
-      color: var(--ink);
-      border: 1.5px solid var(--border);
-    }
+    .btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
     .btn-outline:hover { border-color: var(--ink-muted); }
 
-    .hero-img {
+    /* ─── HERO IMAGE ─── */
+    .hero-img-wrap {
       width: 320px;
       height: 380px;
       flex-shrink: 0;
+      position: relative;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Shown only when image fails to load */
+    .hero-img-placeholder {
+      width: 100%;
+      height: 100%;
       border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
       background: var(--terracotta-light);
-      position: relative;
-      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Lora', serif;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       color: var(--terracotta);
       font-style: italic;
       text-align: center;
       padding: 2rem;
     }
-    .hero-img::after {
+    .hero-img-wrap::after {
       content: '';
       position: absolute;
       inset: 0;
       background: linear-gradient(135deg, transparent 60%, rgba(194,92,58,0.08));
-      border-radius: inherit;
+      border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+      pointer-events: none;
     }
     .hero-deco {
       position: absolute;
@@ -208,11 +210,7 @@
       align-items: center;
     }
     .about-facts { display: flex; flex-direction: column; gap: 1.5rem; }
-    .fact {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
+    .fact { display: flex; gap: 1rem; align-items: flex-start; }
     .fact-icon {
       width: 40px; height: 40px;
       border-radius: 10px;
@@ -221,24 +219,16 @@
       flex-shrink: 0;
     }
     .fact-icon.terra { background: var(--terracotta-light); }
-    .fact-icon.sage { background: var(--sage-light); }
-    .fact-icon.gold { background: var(--gold-light); }
+    .fact-icon.sage  { background: var(--sage-light); }
+    .fact-icon.gold  { background: var(--gold-light); }
     .fact-label {
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 0.2rem;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.2rem;
     }
     .fact-value { font-size: 0.95rem; color: var(--ink-muted); }
 
     /* ─── SKILLS ─── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
     .skill-card {
       background: var(--warm-white);
       border: 1px solid var(--border);
@@ -247,204 +237,122 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .skill-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,20,16,0.07); }
-    .skill-card-icon {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .skill-card h3 {
-      font-size: 0.95rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
+    .skill-card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .skill-card h3 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.5rem; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
     .tag {
-      font-size: 0.75rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
-      background: var(--cream);
-      color: var(--ink-muted);
-      border: 1px solid var(--border);
+      font-size: 0.75rem; padding: 0.2rem 0.55rem;
+      border-radius: 4px; background: var(--cream);
+      color: var(--ink-muted); border: 1px solid var(--border);
     }
 
     /* ─── PROJECTS ─── */
     #projects { background: var(--cream); }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
     .project-card {
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--warm-white);
+      border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--border); background: var(--warm-white);
       transition: transform 0.25s, box-shadow 0.25s;
     }
     .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,20,16,0.09); }
+
+    /* Project thumbnail: uses <img> with a coloured fallback */
     .project-thumb {
       height: 180px;
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .project-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      position: absolute; inset: 0;
+    }
+    /* Emoji/icon shown when no image or as decorative overlay */
+    .project-thumb-icon {
       font-size: 2.5rem;
       position: relative;
-      overflow: hidden;
+      z-index: 1;
+      /* Hidden once a real image loads — see JS below */
     }
+
     .project-body { padding: 1.5rem; }
     .project-chip {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      margin-bottom: 0.75rem;
+      display: inline-block; font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.75rem;
     }
     .chip-terra { background: var(--terracotta-light); color: var(--terracotta); }
-    .chip-sage { background: var(--sage-light); color: var(--sage); }
-    .chip-gold { background: var(--gold-light); color: var(--gold); }
-    .project-title {
-      font-family: 'Lora', serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
+    .chip-sage  { background: var(--sage-light); color: var(--sage); }
+    .chip-gold  { background: var(--gold-light); color: var(--gold); }
+    .project-title { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
     .project-desc { font-size: 0.88rem; color: var(--ink-muted); line-height: 1.7; margin-bottom: 1.2rem; }
     .project-links { display: flex; gap: 0.75rem; }
     .project-links a {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--terracotta);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
+      font-size: 0.8rem; font-weight: 500; color: var(--terracotta);
+      text-decoration: none; display: flex; align-items: center; gap: 0.3rem;
     }
     .project-links a:hover { text-decoration: underline; }
     .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
 
     /* ─── EXPERIENCE ─── */
     #experience { background: var(--warm-white); max-width: 100%; padding: 6rem 0; }
-    #experience .inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 3rem;
-    }
+    #experience .inner { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
     .timeline { position: relative; }
     .timeline::before {
-      content: '';
-      position: absolute;
+      content: ''; position: absolute;
       left: 0; top: 8px; bottom: 0;
-      width: 1px;
-      background: var(--border);
+      width: 1px; background: var(--border);
     }
-    .timeline-item {
-      padding-left: 2.5rem;
-      padding-bottom: 3rem;
-      position: relative;
-    }
+    .timeline-item { padding-left: 2.5rem; padding-bottom: 3rem; position: relative; }
     .timeline-item:last-child { padding-bottom: 0; }
     .timeline-dot {
-      position: absolute;
-      left: -5px;
-      top: 8px;
-      width: 11px; height: 11px;
-      border-radius: 50%;
-      background: var(--terracotta);
-      border: 2px solid var(--cream);
+      position: absolute; left: -5px; top: 8px;
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--terracotta); border: 2px solid var(--cream);
     }
-    .tl-date {
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      color: var(--ink-faint);
-      text-transform: uppercase;
-      margin-bottom: 0.3rem;
-    }
-    .tl-role {
-      font-family: 'Lora', serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.1rem;
-    }
-    .tl-company {
-      font-size: 0.9rem;
-      color: var(--terracotta);
-      margin-bottom: 0.75rem;
-      font-weight: 500;
-    }
+    .tl-date { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; color: var(--ink-faint); text-transform: uppercase; margin-bottom: 0.3rem; }
+    .tl-role { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.1rem; }
+    .tl-company { font-size: 0.9rem; color: var(--terracotta); margin-bottom: 0.75rem; font-weight: 500; }
     .tl-desc { font-size: 0.9rem; color: var(--ink-muted); max-width: 560px; line-height: 1.75; }
 
-    /* ─── CONTACT ─── */
-    #contact {
-      text-align: center;
-      padding: 7rem 3rem;
-      background: var(--ink);
-      max-width: 100%;
-    }
-    #contact .inner { max-width: 600px; margin: 0 auto; }
-    #contact .section-label { color: rgba(255,255,255,0.4); }
-    #contact .section-title { color: #fff; }
-    #contact p { color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; font-size: 1rem; }
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-    }
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1.4rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .cl-primary {
-      background: var(--terracotta);
-      color: #fff;
-    }
-    .cl-primary:hover { background: #a84a2c; }
-    .cl-ghost {
-      background: rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.75);
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-    .cl-ghost:hover { background: rgba(255,255,255,0.14); }
-    .footer-note {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.25);
-      margin-top: 3rem;
-    }
-    .posts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
+    /* ─── LINKEDIN POSTS ─── */
+    .posts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
     .post-card {
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.6rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.6rem;
+      display: flex; flex-direction: column; gap: 1rem;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .post-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,20,16,0.07); }
-    .post-meta { display: flex; align-items: center; gap: 0.75rem; }
-    .post-avatar {
-      width: 38px; height: 38px;
-      border-radius: 50%;
+
+    /* Optional post cover image */
+    .post-cover {
+      width: 100%; height: 140px;
+      border-radius: 8px; overflow: hidden;
       background: var(--terracotta-light);
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.8rem; font-weight: 500; color: var(--terracotta); flex-shrink: 0;
+      font-size: 2rem;
     }
+    .post-cover img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    /* Hide cover wrapper when no image is provided */
+    .post-cover.empty { display: none; }
+
+    .post-meta { display: flex; align-items: center; gap: 0.75rem; }
+    .post-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      overflow: hidden; flex-shrink: 0;
+      background: var(--terracotta-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 500; color: var(--terracotta);
+    }
+    .post-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .post-author { font-size: 0.85rem; font-weight: 500; }
     .post-date { font-size: 0.75rem; color: var(--ink-faint); }
     .post-body {
@@ -457,10 +365,7 @@
       padding-top: 0.75rem; border-top: 1px solid var(--border);
     }
     .post-reactions { font-size: 0.78rem; color: var(--ink-faint); }
-    .post-link {
-      font-size: 0.8rem; font-weight: 500; color: var(--terracotta);
-      text-decoration: none;
-    }
+    .post-link { font-size: 0.8rem; font-weight: 500; color: var(--terracotta); text-decoration: none; }
     .post-link:hover { text-decoration: underline; }
     .post-topic {
       display: inline-block; font-size: 0.7rem; font-weight: 500;
@@ -469,26 +374,41 @@
       background: var(--sage-light); color: var(--sage);
     }
 
+    /* ─── CONTACT ─── */
+    #contact { text-align: center; padding: 7rem 3rem; background: var(--ink); max-width: 100%; }
+    #contact .inner { max-width: 600px; margin: 0 auto; }
+    #contact .section-label { color: rgba(255,255,255,0.4); }
+    #contact .section-title { color: #fff; }
+    #contact p { color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; font-size: 1rem; }
+    .contact-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.4rem; border-radius: 6px;
+      font-size: 0.875rem; font-weight: 500; text-decoration: none; transition: all 0.2s;
+    }
+    .cl-primary { background: var(--terracotta); color: #fff; }
+    .cl-primary:hover { background: #a84a2c; }
+    .cl-ghost { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.12); }
+    .cl-ghost:hover { background: rgba(255,255,255,0.14); }
+    .footer-note { font-size: 0.78rem; color: rgba(255,255,255,0.25); margin-top: 3rem; }
+
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-    .hero-text > * {
-      animation: fadeUp 0.7s ease both;
-    }
-    .hero-eyebrow { animation-delay: 0.1s; }
-    .hero-name    { animation-delay: 0.25s; }
-    .hero-bio     { animation-delay: 0.4s; }
-    .hero-ctas    { animation-delay: 0.55s; }
-    .hero-img     { animation: fadeUp 0.8s 0.3s ease both; }
+    .hero-text > * { animation: fadeUp 0.7s ease both; }
+    .hero-eyebrow  { animation-delay: 0.1s; }
+    .hero-name     { animation-delay: 0.25s; }
+    .hero-bio      { animation-delay: 0.4s; }
+    .hero-ctas     { animation-delay: 0.55s; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.2rem; }
       #hero { flex-direction: column; padding: 6rem 1.5rem 3rem; gap: 2.5rem; }
-      .hero-img { width: 240px; height: 280px; }
+      .hero-img-wrap { width: 240px; height: 280px; }
       section { padding: 4rem 1.5rem; }
       #about .inner { grid-template-columns: 1fr; gap: 3rem; padding: 0 1.5rem; }
       #experience .inner { padding: 0 1.5rem; }
@@ -529,9 +449,23 @@
         <a href="#contact" class="btn btn-outline">Get in touch</a>
       </div>
     </div>
-    <div class="hero-img" style="position: relative;">
-      <!-- Replace this div with an <img src="your-photo.jpg"> -->
-      <div>Your photo here 📸</div>
+
+    <!--
+      PROFILE PHOTO
+      ─────────────
+      Replace the src with your actual photo path: images/profile/photo.jpg
+      The placeholder text shows if the image file is missing.
+    -->
+    <div class="hero-img-wrap">
+      <img
+        class="hero-img"
+        src="images/profile/photo.jpg"
+        alt="Tam Chun Hoi"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="hero-img-placeholder" style="display:none;">
+        Add your photo to<br><code>images/profile/photo.jpg</code>
+      </div>
       <div class="hero-deco"></div>
     </div>
   </div>
@@ -544,10 +478,14 @@
         <div class="section-divider"></div>
         <h2 class="section-title">A bit about<br>who I am</h2>
         <p style="color: var(--ink-muted); line-height: 1.85; font-size: 0.97rem; margin-bottom: 1.2rem;">
-          I'm a software engineer with X years of experience building full-stack web applications. I started coding because I love making things — and I've never stopped. I believe the best software is built with empathy for the user, care for the codebase, and a healthy amount of curiosity.
+          I'm a software engineer with X years of experience building full-stack web applications. I started coding
+          because I love making things — and I've never stopped. I believe the best software is built with empathy for
+          the user, care for the codebase, and a healthy amount of curiosity.
         </p>
         <p style="color: var(--ink-muted); line-height: 1.85; font-size: 0.97rem;">
-          Outside of work I enjoy <strong style="font-weight: 500; color: var(--ink);">hiking</strong>, <strong style="font-weight: 500; color: var(--ink);">reading sci-fi</strong>, and tinkering with side projects. I'm always happy to talk about tech, ideas, or anything in between.
+          Outside of work I enjoy <strong style="font-weight:500; color:var(--ink);">hiking</strong>,
+          <strong style="font-weight:500; color:var(--ink);">reading sci-fi</strong>, and tinkering with side projects.
+          I'm always happy to talk about tech, ideas, or anything in between.
         </p>
       </div>
       <div class="about-facts">
@@ -599,69 +537,55 @@
       <div class="skill-card">
         <div class="skill-card-icon">⚡</div>
         <h3>Frontend</h3>
-        <p style="font-size: 0.83rem; color: var(--ink-muted);">Building responsive, accessible interfaces</p>
+        <p style="font-size:0.83rem;color:var(--ink-muted);">Building responsive, accessible interfaces</p>
         <div class="skill-tags">
-          <span class="tag">React</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">Next.js</span>
-          <span class="tag">CSS</span>
-          <span class="tag">Tailwind</span>
+          <span class="tag">React</span><span class="tag">TypeScript</span>
+          <span class="tag">Next.js</span><span class="tag">CSS</span><span class="tag">Tailwind</span>
         </div>
       </div>
       <div class="skill-card">
         <div class="skill-card-icon">🔧</div>
         <h3>Backend</h3>
-        <p style="font-size: 0.83rem; color: var(--ink-muted);">APIs, databases, and server-side logic</p>
+        <p style="font-size:0.83rem;color:var(--ink-muted);">APIs, databases, and server-side logic</p>
         <div class="skill-tags">
-          <span class="tag">Node.js</span>
-          <span class="tag">Python</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">REST</span>
-          <span class="tag">GraphQL</span>
+          <span class="tag">Node.js</span><span class="tag">Python</span>
+          <span class="tag">PostgreSQL</span><span class="tag">REST</span><span class="tag">GraphQL</span>
         </div>
       </div>
       <div class="skill-card">
         <div class="skill-card-icon">☁️</div>
         <h3>Cloud &amp; DevOps</h3>
-        <p style="font-size: 0.83rem; color: var(--ink-muted);">Deploy fast, ship confidently</p>
+        <p style="font-size:0.83rem;color:var(--ink-muted);">Deploy fast, ship confidently</p>
         <div class="skill-tags">
-          <span class="tag">AWS</span>
-          <span class="tag">Docker</span>
-          <span class="tag">GitHub Actions</span>
-          <span class="tag">Terraform</span>
+          <span class="tag">AWS</span><span class="tag">Docker</span>
+          <span class="tag">GitHub Actions</span><span class="tag">Terraform</span>
         </div>
       </div>
       <div class="skill-card">
         <div class="skill-card-icon">🧪</div>
         <h3>Testing &amp; Quality</h3>
-        <p style="font-size: 0.83rem; color: var(--ink-muted);">Code that I'm confident shipping</p>
+        <p style="font-size:0.83rem;color:var(--ink-muted);">Code that I'm confident shipping</p>
         <div class="skill-tags">
-          <span class="tag">Jest</span>
-          <span class="tag">Playwright</span>
-          <span class="tag">Vitest</span>
-          <span class="tag">TDD</span>
+          <span class="tag">Jest</span><span class="tag">Playwright</span>
+          <span class="tag">Vitest</span><span class="tag">TDD</span>
         </div>
       </div>
       <div class="skill-card">
         <div class="skill-card-icon">🤝</div>
         <h3>Soft skills</h3>
-        <p style="font-size: 0.83rem; color: var(--ink-muted);">The things that matter in teams</p>
+        <p style="font-size:0.83rem;color:var(--ink-muted);">The things that matter in teams</p>
         <div class="skill-tags">
-          <span class="tag">Code review</span>
-          <span class="tag">Mentoring</span>
-          <span class="tag">Documentation</span>
-          <span class="tag">Agile</span>
+          <span class="tag">Code review</span><span class="tag">Mentoring</span>
+          <span class="tag">Documentation</span><span class="tag">Agile</span>
         </div>
       </div>
       <div class="skill-card">
         <div class="skill-card-icon">🛠️</div>
         <h3>Tooling</h3>
-        <p style="font-size: 0.83rem; color: var(--ink-muted);">The everyday setup</p>
+        <p style="font-size:0.83rem;color:var(--ink-muted);">The everyday setup</p>
         <div class="skill-tags">
-          <span class="tag">Git</span>
-          <span class="tag">VS Code</span>
-          <span class="tag">Figma</span>
-          <span class="tag">Linear</span>
+          <span class="tag">Git</span><span class="tag">VS Code</span>
+          <span class="tag">Figma</span><span class="tag">Linear</span>
         </div>
       </div>
     </div>
@@ -674,16 +598,29 @@
     <h2 class="section-title">Projects</h2>
     <div class="projects-grid">
 
+      <!--
+        PROJECT THUMBNAIL IMAGES
+        ─────────────────────────
+        Each .project-thumb contains an <img> pointing to images/projects/*.
+        If the file is missing the coloured background + emoji remain as a fallback.
+        Swap the src to your actual screenshot or cover art.
+      -->
+
       <div class="project-card">
-        <div class="project-thumb" style="background: var(--terracotta-light);">🌿</div>
+        <div class="project-thumb" style="background: var(--terracotta-light);">
+          <img
+            src="images/projects/project-one.jpg"
+            alt="Project One screenshot"
+            onerror="this.remove();"
+          />
+          <span class="project-thumb-icon">🌿</span>
+        </div>
         <div class="project-body">
           <span class="project-chip chip-terra">Full-stack</span>
           <h3 class="project-title">Project One</h3>
-          <p class="project-desc">A short description of what this project does, the problem it solves, and why you built it. Keep it human — not a job description.</p>
+          <p class="project-desc">A short description of what this project does, the problem it solves, and why you built it.</p>
           <div class="project-tech">
-            <span class="tag">React</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">PostgreSQL</span>
+            <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span>
           </div>
           <div class="project-links">
             <a href="https://github.com/yourusername/project-one" target="_blank">GitHub ↗</a>
@@ -693,15 +630,20 @@
       </div>
 
       <div class="project-card">
-        <div class="project-thumb" style="background: var(--sage-light);">📊</div>
+        <div class="project-thumb" style="background: var(--sage-light);">
+          <img
+            src="images/projects/project-two.jpg"
+            alt="Project Two screenshot"
+            onerror="this.remove();"
+          />
+          <span class="project-thumb-icon">📊</span>
+        </div>
         <div class="project-body">
           <span class="project-chip chip-sage">API / Backend</span>
           <h3 class="project-title">Project Two</h3>
-          <p class="project-desc">What makes this interesting? Talk about a technical challenge you overcame, or the user impact. Two to three sentences is plenty.</p>
+          <p class="project-desc">What makes this interesting? Talk about a technical challenge you overcame, or the user impact.</p>
           <div class="project-tech">
-            <span class="tag">Python</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Redis</span>
+            <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Redis</span>
           </div>
           <div class="project-links">
             <a href="https://github.com/yourusername/project-two" target="_blank">GitHub ↗</a>
@@ -710,14 +652,20 @@
       </div>
 
       <div class="project-card">
-        <div class="project-thumb" style="background: var(--gold-light);">🛰️</div>
+        <div class="project-thumb" style="background: var(--gold-light);">
+          <img
+            src="images/projects/project-three.jpg"
+            alt="Project Three screenshot"
+            onerror="this.remove();"
+          />
+          <span class="project-thumb-icon">🛰️</span>
+        </div>
         <div class="project-body">
           <span class="project-chip chip-gold">Open source</span>
           <h3 class="project-title">Project Three</h3>
-          <p class="project-desc">Maybe an open source contribution, a CLI tool, or a library. What does it do and who finds it useful? Don't be modest — you built this!</p>
+          <p class="project-desc">Maybe an open source contribution, a CLI tool, or a library. What does it do and who finds it useful?</p>
           <div class="project-tech">
-            <span class="tag">TypeScript</span>
-            <span class="tag">CLI</span>
+            <span class="tag">TypeScript</span><span class="tag">CLI</span>
           </div>
           <div class="project-links">
             <a href="https://github.com/yourusername/project-three" target="_blank">GitHub ↗</a>
@@ -742,7 +690,7 @@
           <div class="tl-date">2023 – Present</div>
           <div class="tl-role">Senior Software Engineer</div>
           <div class="tl-company">Company Name</div>
-          <p class="tl-desc">What did you build? What was the team like? Mention scale, impact, or a specific problem you're proud of solving. 2–3 lines is great.</p>
+          <p class="tl-desc">What did you build? What was the team like? Mention scale, impact, or a specific problem you're proud of solving.</p>
         </div>
 
         <div class="timeline-item">
@@ -750,7 +698,7 @@
           <div class="tl-date">2021 – 2023</div>
           <div class="tl-role">Software Engineer</div>
           <div class="tl-company">Previous Company</div>
-          <p class="tl-desc">Another chapter. What did you grow into here? This is also a good place to mention mentorship, cross-functional work, or shipping something you're proud of.</p>
+          <p class="tl-desc">Another chapter. What did you grow into here? Cross-functional work, mentorship, or something you shipped that you're proud of.</p>
         </div>
 
         <div class="timeline-item">
@@ -758,7 +706,7 @@
           <div class="tl-date">2019 – 2021</div>
           <div class="tl-role">Junior Engineer</div>
           <div class="tl-company">First Company</div>
-          <p class="tl-desc">Where it all started. Even early roles show trajectory. Talk about what you learned, who you learned from, or a moment that shaped how you work.</p>
+          <p class="tl-desc">Where it all started. Talk about what you learned, who you learned from, or a moment that shaped how you work.</p>
         </div>
 
       </div>
@@ -766,25 +714,52 @@
   </section>
 
   <!-- LINKEDIN POSTS -->
-  <section id="writing" style="background: var(--warm-white); max-width: 100%; padding: 6rem 0;">
+  <section id="posts" style="background: var(--warm-white); max-width: 100%; padding: 6rem 0;">
     <div style="max-width: 1100px; margin: 0 auto; padding: 0 3rem;">
       <div class="section-label">Thinking out loud</div>
       <div class="section-divider"></div>
       <h2 class="section-title">From LinkedIn</h2>
       <div class="posts-grid">
 
-        <!-- POST 1 — replace with your real post -->
+        <!--
+          LINKEDIN POST CARDS
+          ────────────────────
+          Each card has two optional image slots:
+            1. .post-cover  → a banner/screenshot image (images/posts/post-1.jpg)
+                              Remove the <div class="post-cover"> block entirely if you don't want a cover.
+            2. .post-avatar → your headshot (images/profile/photo.jpg — reuses the same file)
+                              Falls back to your initials if the image is missing.
+        -->
+
+        <!-- POST 1 -->
         <div class="post-card">
+          <!-- Cover image (optional — delete this block if unused) -->
+          <div class="post-cover" id="post-cover-1">
+            <img
+              src="images/posts/post-1.jpg"
+              alt="Post 1 cover"
+              onload="document.getElementById('post-cover-1').classList.remove('empty');"
+              onerror="document.getElementById('post-cover-1').classList.add('empty');"
+            />
+          </div>
           <div class="post-meta">
-            <div class="post-avatar">YN</div>
+            <div class="post-avatar">
+              <img
+                src="images/profile/photo.jpg"
+                alt="Tam Chun Hoi"
+                onerror="this.style.display='none';"
+              />
+              <span>TCH</span>
+            </div>
             <div>
-              <div class="post-author">Your Name</div>
+              <div class="post-author">Tam Chun Hoi</div>
               <div class="post-date">June 2025</div>
             </div>
           </div>
           <span class="post-topic">Career</span>
           <p class="post-body">
-            Paste the text of your LinkedIn post here. Keep it to the opening lines — enough to hook someone in. The card will clip it automatically after 6 lines.
+            Paste the text of your LinkedIn post here. Keep it to the opening lines — enough to hook someone in.
+            The card will clip it automatically after 6 lines.
           </p>
           <div class="post-footer">
             <span class="post-reactions">👍 142 reactions</span>
@@ -794,16 +769,32 @@
 
         <!-- POST 2 -->
         <div class="post-card">
+          <div class="post-cover" id="post-cover-2">
+            <img
+              src="images/posts/post-2.jpg"
+              alt="Post 2 cover"
+              onload="document.getElementById('post-cover-2').classList.remove('empty');"
+              onerror="document.getElementById('post-cover-2').classList.add('empty');"
+            />
+          </div>
           <div class="post-meta">
-            <div class="post-avatar">YN</div>
+            <div class="post-avatar">
+              <img
+                src="images/profile/photo.jpg"
+                alt="Tam Chun Hoi"
+                onerror="this.style.display='none';"
+              />
+              <span>TCH</span>
+            </div>
             <div>
-              <div class="post-author">Your Name</div>
+              <div class="post-author">Tam Chun Hoi</div>
               <div class="post-date">May 2025</div>
             </div>
           </div>
           <span class="post-topic">Engineering</span>
           <p class="post-body">
-            Paste your second post here. A technical insight, a lesson learned, or something you shipped. These tend to perform well and show your depth as an engineer.
+            Paste your second post here. A technical insight, a lesson learned, or something you shipped.
+            These tend to perform well and show your depth as an engineer.
           </p>
           <div class="post-footer">
             <span class="post-reactions">👍 89 reactions</span>
@@ -813,16 +804,32 @@
 
         <!-- POST 3 -->
         <div class="post-card">
+          <div class="post-cover" id="post-cover-3">
+            <img
+              src="images/posts/post-3.jpg"
+              alt="Post 3 cover"
+              onload="document.getElementById('post-cover-3').classList.remove('empty');"
+              onerror="document.getElementById('post-cover-3').classList.add('empty');"
+            />
+          </div>
           <div class="post-meta">
-            <div class="post-avatar">YN</div>
+            <div class="post-avatar">
+              <img
+                src="images/profile/photo.jpg"
+                alt="Tam Chun Hoi"
+                onerror="this.style.display='none';"
+              />
+              <span>TCH</span>
+            </div>
             <div>
-              <div class="post-author">Your Name</div>
+              <div class="post-author">Tam Chun Hoi</div>
               <div class="post-date">April 2025</div>
             </div>
           </div>
           <span class="post-topic">Mindset</span>
           <p class="post-body">
-            Your third post. Maybe something more personal — a reflection, a milestone, or a piece of advice you wish someone had given you earlier in your career.
+            Your third post. Maybe something more personal — a reflection, a milestone, or a piece of advice
+            you wish someone had given you earlier in your career.
           </p>
           <div class="post-footer">
             <span class="post-reactions">👍 210 reactions</span>
@@ -838,7 +845,7 @@
   <section id="contact">
     <div class="inner">
       <div class="section-label">Say hello</div>
-      <h2 class="section-title" style="color: #fff; margin-bottom: 1rem;">Let's work together</h2>
+      <h2 class="section-title" style="color:#fff; margin-bottom:1rem;">Let's work together</h2>
       <p>I'm always open to interesting conversations — whether that's a new role, a collaboration, or just a chat about something you're building.</p>
       <div class="contact-links">
         <a href="mailto:you@example.com" class="contact-link cl-primary">✉️ Email me</a>
@@ -849,6 +856,27 @@
       <p class="footer-note">Made with care · © 2026 Tam Chun Hoi</p>
     </div>
   </section>
+
+  <script>
+    /*
+      Project thumbnail behaviour:
+      Once a real image loads successfully, hide the emoji icon so it doesn't overlap.
+    */
+    document.querySelectorAll('.project-thumb img').forEach(img => {
+      img.addEventListener('load', () => {
+        const icon = img.closest('.project-thumb').querySelector('.project-thumb-icon');
+        if (icon) icon.style.display = 'none';
+      });
+    });
+
+    /*
+      Post cover: default to hidden; shown only if the image loads.
+      (Handled via onload/onerror inline attributes above.)
+    */
+    document.querySelectorAll('.post-cover').forEach(el => {
+      el.classList.add('empty');
+    });
+  </script>
 
 </body>
 </html>
