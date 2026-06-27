@@ -1,727 +1,1290 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tam Chun Hoi — Software Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tam Chun Hoi — Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    :root {
-      --cream: #fdf8f1;
-      --warm-white: #fff9f2;
-      --ink: #1a1410;
-      --ink-muted: #6b5f54;
-      --ink-faint: #b5a99c;
-      --terracotta: #c25c3a;
-      --terracotta-light: #f5e8e2;
-      --sage: #6a8c6f;
-      --sage-light: #e8f0e9;
-      --gold: #c9962a;
-      --gold-light: #fdf3dc;
-      --border: rgba(26,20,16,0.1);
-      --radius: 12px;
-    }
+    <style>
+      :root {
+        --cream: #fdf8f1;
+        --warm-white: #fff9f2;
+        --ink: #1a1410;
+        --ink-muted: #6b5f54;
+        --ink-faint: #b5a99c;
+        --terracotta: #c25c3a;
+        --terracotta-light: #f5e8e2;
+        --sage: #6a8c6f;
+        --sage-light: #e8f0e9;
+        --gold: #c9962a;
+        --gold-light: #fdf3dc;
+        --border: rgba(26, 20, 16, 0.1);
+        --radius: 12px;
+      }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.7;
-      font-size: 16px;
-    }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--ink);
+        line-height: 1.7;
+        font-size: 16px;
+      }
 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.1rem 3rem;
-      background: rgba(253,248,241,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'Lora', serif;
-      font-size: 1.1rem;
-      color: var(--ink);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.875rem;
-      color: var(--ink-muted);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--terracotta); }
+      /* ─── NAV ─── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 3rem;
+        background: rgba(253, 248, 241, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-logo {
+        font-family: "Lora", serif;
+        font-size: 1.1rem;
+        color: var(--ink);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 0.875rem;
+        color: var(--ink-muted);
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--terracotta);
+      }
 
-    /* ─── HERO ─── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 8rem 3rem 5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      gap: 5rem;
-    }
-    .hero-text { flex: 1; }
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      margin-bottom: 1.2rem;
-    }
-    .hero-name {
-      font-family: 'Lora', serif;
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      font-weight: 600;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      color: var(--ink);
-    }
-    .hero-name em { font-style: italic; color: var(--terracotta); }
-    .hero-bio {
-      font-size: 1.05rem;
-      color: var(--ink-muted);
-      max-width: 480px;
-      margin-bottom: 2.5rem;
-      line-height: 1.8;
-    }
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.75rem 1.6rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-primary { background: var(--terracotta); color: #fff; border: none; }
-    .btn-primary:hover { background: #a84a2c; transform: translateY(-1px); }
-    .btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
-    .btn-outline:hover { border-color: var(--ink-muted); }
+      /* ─── HERO ─── */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 8rem 3rem 5rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        gap: 5rem;
+      }
+      .hero-text {
+        flex: 1;
+      }
+      .hero-eyebrow {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--terracotta);
+        margin-bottom: 1.2rem;
+      }
+      .hero-name {
+        font-family: "Lora", serif;
+        font-size: clamp(2.8rem, 6vw, 4.5rem);
+        font-weight: 600;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        color: var(--ink);
+      }
+      .hero-name em {
+        font-style: italic;
+        color: var(--terracotta);
+      }
+      .hero-bio {
+        font-size: 1.05rem;
+        color: var(--ink-muted);
+        max-width: 480px;
+        margin-bottom: 2.5rem;
+        line-height: 1.8;
+      }
+      .hero-ctas {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.75rem 1.6rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .btn-primary {
+        background: var(--terracotta);
+        color: #fff;
+        border: none;
+      }
+      .btn-primary:hover {
+        background: #a84a2c;
+        transform: translateY(-1px);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--ink);
+        border: 1.5px solid var(--border);
+      }
+      .btn-outline:hover {
+        border-color: var(--ink-muted);
+      }
 
-    /* ─── HERO IMAGE ─── */
-    .hero-img-wrap {
-      width: 320px;
-      height: 380px;
-      flex-shrink: 0;
-      position: relative;
-      animation: fadeUp 0.8s 0.3s ease both;
-    }
-    .hero-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
-      object-fit: cover;
-      display: block;
-    }
-    /* Shown only when image fails to load */
-    .hero-img-placeholder {
-      width: 100%;
-      height: 100%;
-      border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
-      background: var(--terracotta-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Lora', serif;
-      font-size: 0.95rem;
-      color: var(--terracotta);
-      font-style: italic;
-      text-align: center;
-      padding: 2rem;
-    }
-    .hero-img-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent 60%, rgba(194,92,58,0.08));
-      border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
-      pointer-events: none;
-    }
-    .hero-deco {
-      position: absolute;
-      bottom: -20px; right: -20px;
-      width: 120px; height: 120px;
-      background: var(--gold-light);
-      border-radius: 50%;
-      z-index: -1;
-    }
+      /* ─── HERO IMAGE ─── */
+      .hero-img-wrap {
+        width: 320px;
+        height: 380px;
+        flex-shrink: 0;
+        position: relative;
+        animation: fadeUp 0.8s 0.3s ease both;
+      }
+      .hero-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+        object-fit: cover;
+        display: block;
+      }
+      /* Shown only when image fails to load */
+      .hero-img-placeholder {
+        width: 100%;
+        height: 100%;
+        border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+        background: var(--terracotta-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Lora", serif;
+        font-size: 0.95rem;
+        color: var(--terracotta);
+        font-style: italic;
+        text-align: center;
+        padding: 2rem;
+      }
+      .hero-img-wrap::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          transparent 60%,
+          rgba(194, 92, 58, 0.08)
+        );
+        border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+        pointer-events: none;
+      }
+      .hero-deco {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        width: 120px;
+        height: 120px;
+        background: var(--gold-light);
+        border-radius: 50%;
+        z-index: -1;
+      }
 
-    /* ─── SECTIONS ─── */
-    section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 6rem 3rem;
-    }
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 0.6rem;
-    }
-    .section-title {
-      font-family: 'Lora', serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 600;
-      line-height: 1.2;
-      margin-bottom: 3.5rem;
-      color: var(--ink);
-    }
-    .section-divider {
-      width: 40px;
-      height: 3px;
-      background: var(--terracotta);
-      margin-bottom: 1.2rem;
-      border-radius: 2px;
-    }
+      /* ─── SECTIONS ─── */
+      section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 6rem 3rem;
+      }
+      .section-label {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-bottom: 0.6rem;
+      }
+      .section-title {
+        font-family: "Lora", serif;
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 3.5rem;
+        color: var(--ink);
+      }
+      .section-divider {
+        width: 40px;
+        height: 3px;
+        background: var(--terracotta);
+        margin-bottom: 1.2rem;
+        border-radius: 2px;
+      }
 
-    /* ─── ABOUT ─── */
-    #about { background: var(--warm-white); max-width: 100%; padding: 6rem 0; }
-    #about .inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 3rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-    }
-    .about-facts { display: flex; flex-direction: column; gap: 1.5rem; }
-    .fact { display: flex; gap: 1rem; align-items: flex-start; }
-    .fact-icon {
-      width: 40px; height: 40px;
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-    .fact-icon.terra { background: var(--terracotta-light); }
-    .fact-icon.sage  { background: var(--sage-light); }
-    .fact-icon.gold  { background: var(--gold-light); }
-    .fact-label {
-      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.2rem;
-    }
-    .fact-value { font-size: 0.95rem; color: var(--ink-muted); }
+      /* ─── ABOUT ─── */
+      #about {
+        background: var(--warm-white);
+        max-width: 100%;
+        padding: 6rem 0;
+      }
+      #about .inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 3rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+        align-items: center;
+      }
+      .about-facts {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .fact {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      .fact-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+      .fact-icon.terra {
+        background: var(--terracotta-light);
+      }
+      .fact-icon.sage {
+        background: var(--sage-light);
+      }
+      .fact-icon.gold {
+        background: var(--gold-light);
+      }
+      .fact-label {
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-bottom: 0.2rem;
+      }
+      .fact-value {
+        font-size: 0.95rem;
+        color: var(--ink-muted);
+      }
 
-    /* ─── SKILLS ─── */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
-    .skill-card {
-      background: var(--warm-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .skill-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,20,16,0.07); }
-    .skill-card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-    .skill-card h3 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.5rem; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
-    .tag {
-      font-size: 0.75rem; padding: 0.2rem 0.55rem;
-      border-radius: 4px; background: var(--cream);
-      color: var(--ink-muted); border: 1px solid var(--border);
-    }
+      /* ─── SKILLS ─── */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+      }
+      .skill-card {
+        background: var(--warm-white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .skill-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(26, 20, 16, 0.07);
+      }
+      .skill-card-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+      .skill-card h3 {
+        font-size: 0.95rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.75rem;
+      }
+      .tag {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.55rem;
+        border-radius: 4px;
+        background: var(--cream);
+        color: var(--ink-muted);
+        border: 1px solid var(--border);
+      }
 
-    /* ─── PROJECTS ─── */
-    #projects { background: var(--cream); }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .project-card {
-      border-radius: var(--radius); overflow: hidden;
-      border: 1px solid var(--border); background: var(--warm-white);
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-    .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,20,16,0.09); }
+      /* ─── PROJECTS ─── */
+      #projects {
+        background: var(--cream);
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+      .project-card {
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background: var(--warm-white);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(26, 20, 16, 0.09);
+      }
 
-    /* Project thumbnail: uses <img> with a coloured fallback */
-    .project-thumb {
-      height: 180px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .project-thumb img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      position: absolute; inset: 0;
-    }
-    /* Emoji/icon shown when no image or as decorative overlay */
-    .project-thumb-icon {
-      font-size: 2.5rem;
-      position: relative;
-      z-index: 1;
-      /* Hidden once a real image loads — see JS below */
-    }
+      /* Project thumbnail: uses <img> with a coloured fallback */
+      .project-thumb {
+        height: 180px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .project-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        position: absolute;
+        inset: 0;
+      }
+      /* Emoji/icon shown when no image or as decorative overlay */
+      .project-thumb-icon {
+        font-size: 2.5rem;
+        position: relative;
+        z-index: 1;
+        /* Hidden once a real image loads — see JS below */
+      }
 
-    .project-body { padding: 1.5rem; }
-    .project-chip {
-      display: inline-block; font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.75rem;
-    }
-    .chip-terra { background: var(--terracotta-light); color: var(--terracotta); }
-    .chip-sage  { background: var(--sage-light); color: var(--sage); }
-    .chip-gold  { background: var(--gold-light); color: var(--gold); }
-    .project-title { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .project-desc { font-size: 0.88rem; color: var(--ink-muted); line-height: 1.7; margin-bottom: 1.2rem; }
-    .project-links { display: flex; gap: 0.75rem; }
-    .project-links a {
-      font-size: 0.8rem; font-weight: 500; color: var(--terracotta);
-      text-decoration: none; display: flex; align-items: center; gap: 0.3rem;
-    }
-    .project-links a:hover { text-decoration: underline; }
-    .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+      .project-body {
+        padding: 1.5rem;
+      }
+      .project-chip {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        margin-bottom: 0.75rem;
+      }
+      .chip-terra {
+        background: var(--terracotta-light);
+        color: var(--terracotta);
+      }
+      .chip-sage {
+        background: var(--sage-light);
+        color: var(--sage);
+      }
+      .chip-gold {
+        background: var(--gold-light);
+        color: var(--gold);
+      }
+      .project-title {
+        font-family: "Lora", serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .project-desc {
+        font-size: 0.88rem;
+        color: var(--ink-muted);
+        line-height: 1.7;
+        margin-bottom: 1.2rem;
+      }
+      .project-links {
+        display: flex;
+        gap: 0.75rem;
+      }
+      .project-links a {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--terracotta);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      .project-links a:hover {
+        text-decoration: underline;
+      }
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+      }
 
-    /* ─── EXPERIENCE ─── */
-    #experience { background: var(--warm-white); max-width: 100%; padding: 6rem 0; }
-    #experience .inner { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
-    .timeline { position: relative; }
-    .timeline::before {
-      content: ''; position: absolute;
-      left: 0; top: 8px; bottom: 0;
-      width: 1px; background: var(--border);
-    }
-    .timeline-item { padding-left: 2.5rem; padding-bottom: 3rem; position: relative; }
-    .timeline-item:last-child { padding-bottom: 0; }
-    .timeline-dot {
-      position: absolute; left: -5px; top: 8px;
-      width: 11px; height: 11px; border-radius: 50%;
-      background: var(--terracotta); border: 2px solid var(--cream);
-    }
-    .tl-date { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; color: var(--ink-faint); text-transform: uppercase; margin-bottom: 0.3rem; }
-    .tl-role { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.1rem; }
-    .tl-company { font-size: 0.9rem; color: var(--terracotta); margin-bottom: 0.75rem; font-weight: 500; }
-    .tl-desc { font-size: 0.9rem; color: var(--ink-muted); max-width: 560px; line-height: 1.75; }
+      /* ─── EXPERIENCE ─── */
+      #experience {
+        background: var(--warm-white);
+        max-width: 100%;
+        padding: 6rem 0;
+      }
+      #experience .inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 3rem;
+      }
+      .timeline {
+        position: relative;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        bottom: 0;
+        width: 1px;
+        background: var(--border);
+      }
+      .timeline-item {
+        padding-left: 2.5rem;
+        padding-bottom: 3rem;
+        position: relative;
+      }
+      .timeline-item:last-child {
+        padding-bottom: 0;
+      }
+      .timeline-dot {
+        position: absolute;
+        left: -5px;
+        top: 8px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--terracotta);
+        border: 2px solid var(--cream);
+      }
+      .tl-date {
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        color: var(--ink-faint);
+        text-transform: uppercase;
+        margin-bottom: 0.3rem;
+      }
+      .tl-role {
+        font-family: "Lora", serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.1rem;
+      }
+      .tl-company {
+        font-size: 0.9rem;
+        color: var(--terracotta);
+        margin-bottom: 0.75rem;
+        font-weight: 500;
+      }
+      .tl-desc {
+        margin: 0.5rem 0 0 1.1rem;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
 
-    /* ─── LINKEDIN POSTS ─── */
-    .posts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .post-card {
-      background: var(--cream); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.6rem;
-      display: flex; flex-direction: column; gap: 1rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .post-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,20,16,0.07); }
+      .tl-desc li {
+        font-size: 0.88rem;
+        color: var(--ink-muted);
+        line-height: 1.55;
+      }
 
-    /* Optional post cover image */
-    .post-cover {
-      width: 100%; height: 140px;
-      border-radius: 8px; overflow: hidden;
-      background: var(--terracotta-light);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2rem;
-    }
-    .post-cover img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-    }
-    /* Hide cover wrapper when no image is provided */
-    .post-cover.empty { display: none; }
+      /* ─── LINKEDIN POSTS ─── */
+      .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+      .post-card {
+        background: var(--cream);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .post-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(26, 20, 16, 0.07);
+      }
 
-    .post-meta { display: flex; align-items: center; gap: 0.75rem; }
-    .post-avatar {
-      width: 38px; height: 38px; border-radius: 50%;
-      overflow: hidden; flex-shrink: 0;
-      background: var(--terracotta-light);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.8rem; font-weight: 500; color: var(--terracotta);
-    }
-    .post-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .post-author { font-size: 0.85rem; font-weight: 500; }
-    .post-date { font-size: 0.75rem; color: var(--ink-faint); }
-    .post-body {
-      font-size: 0.9rem; color: var(--ink-muted); line-height: 1.75; flex: 1;
-      display: -webkit-box; -webkit-line-clamp: 6;
-      -webkit-box-orient: vertical; overflow: hidden;
-    }
-    .post-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-top: 0.75rem; border-top: 1px solid var(--border);
-    }
-    .post-reactions { font-size: 0.78rem; color: var(--ink-faint); }
-    .post-link { font-size: 0.8rem; font-weight: 500; color: var(--terracotta); text-decoration: none; }
-    .post-link:hover { text-decoration: underline; }
-    .post-topic {
-      display: inline-block; font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      padding: 0.18rem 0.55rem; border-radius: 4px;
-      background: var(--sage-light); color: var(--sage);
-    }
+      /* Optional post cover image */
+      .post-cover {
+        width: 100%;
+        height: 140px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--terracotta-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+      }
+      .post-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      /* Hide cover wrapper when no image is provided */
+      .post-cover.empty {
+        display: none;
+      }
 
-    /* ─── CONTACT ─── */
-    #contact { text-align: center; padding: 7rem 3rem; background: var(--ink); max-width: 100%; }
-    #contact .inner { max-width: 600px; margin: 0 auto; }
-    #contact .section-label { color: rgba(255,255,255,0.4); }
-    #contact .section-title { color: #fff; }
-    #contact p { color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; font-size: 1rem; }
-    .contact-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 3rem; }
-    .contact-link {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.65rem 1.4rem; border-radius: 6px;
-      font-size: 0.875rem; font-weight: 500; text-decoration: none; transition: all 0.2s;
-    }
-    .cl-primary { background: var(--terracotta); color: #fff; }
-    .cl-primary:hover { background: #a84a2c; }
-    .cl-ghost { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.12); }
-    .cl-ghost:hover { background: rgba(255,255,255,0.14); }
-    .footer-note { font-size: 0.78rem; color: rgba(255,255,255,0.25); margin-top: 3rem; }
+      .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .post-avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: var(--terracotta-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--terracotta);
+      }
+      .post-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .post-author {
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+      .post-date {
+        font-size: 0.75rem;
+        color: var(--ink-faint);
+      }
+      .post-body {
+        font-size: 0.9rem;
+        color: var(--ink-muted);
+        line-height: 1.75;
+        flex: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .post-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--border);
+      }
+      .post-reactions {
+        font-size: 0.78rem;
+        color: var(--ink-faint);
+      }
+      .post-link {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--terracotta);
+        text-decoration: none;
+      }
+      .post-link:hover {
+        text-decoration: underline;
+      }
+      .post-topic {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        padding: 0.18rem 0.55rem;
+        border-radius: 4px;
+        background: var(--sage-light);
+        color: var(--sage);
+      }
 
-    /* ─── ANIMATIONS ─── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-text > * { animation: fadeUp 0.7s ease both; }
-    .hero-eyebrow  { animation-delay: 0.1s; }
-    .hero-name     { animation-delay: 0.25s; }
-    .hero-bio      { animation-delay: 0.4s; }
-    .hero-ctas     { animation-delay: 0.55s; }
+      /* ─── CONTACT ─── */
+      #contact {
+        text-align: center;
+        padding: 7rem 3rem;
+        background: var(--ink);
+        max-width: 100%;
+      }
+      #contact .inner {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      #contact .section-label {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      #contact .section-title {
+        color: #fff;
+      }
+      #contact p {
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 2.5rem;
+        font-size: 1rem;
+      }
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+      }
+      .contact-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.65rem 1.4rem;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .cl-primary {
+        background: var(--terracotta);
+        color: #fff;
+      }
+      .cl-primary:hover {
+        background: #a84a2c;
+      }
+      .cl-ghost {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .cl-ghost:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
+      .footer-note {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.25);
+        margin-top: 3rem;
+      }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.2rem; }
-      #hero { flex-direction: column; padding: 6rem 1.5rem 3rem; gap: 2.5rem; }
-      .hero-img-wrap { width: 240px; height: 280px; }
-      section { padding: 4rem 1.5rem; }
-      #about .inner { grid-template-columns: 1fr; gap: 3rem; padding: 0 1.5rem; }
-      #experience .inner { padding: 0 1.5rem; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 480px) {
-      .nav-links { display: none; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
+      /* ─── ANIMATIONS ─── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .hero-text > * {
+        animation: fadeUp 0.7s ease both;
+      }
+      .hero-eyebrow {
+        animation-delay: 0.1s;
+      }
+      .hero-name {
+        animation-delay: 0.25s;
+      }
+      .hero-bio {
+        animation-delay: 0.4s;
+      }
+      .hero-ctas {
+        animation-delay: 0.55s;
+      }
 
-  <!-- NAV -->
-  <nav>
-    <a href="#hero" class="nav-logo">Tam Chun Hoi</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#posts">Posts</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 768px) {
+        nav {
+          padding: 1rem 1.5rem;
+        }
+        .nav-links {
+          gap: 1.2rem;
+        }
+        #hero {
+          flex-direction: column;
+          padding: 6rem 1.5rem 3rem;
+          gap: 2.5rem;
+        }
+        .hero-img-wrap {
+          width: 240px;
+          height: 280px;
+        }
+        section {
+          padding: 4rem 1.5rem;
+        }
+        #about .inner {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+          padding: 0 1.5rem;
+        }
+        #experience .inner {
+          padding: 0 1.5rem;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 480px) {
+        .nav-links {
+          display: none;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a href="#hero" class="nav-logo">Tam Chun Hoi</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#posts">Posts</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
-  <!-- HERO -->
-  <div id="hero">
-    <div class="hero-text">
-      <span class="hero-eyebrow">SOFTWARE ENGINEER • AI & MACHINE LEARNING</span>
-      <h1 class="hero-name">Hi, I'm<br><em>Tam Chun Hoi</em></h1>
-      <p class="hero-bio">
-        I build intelligent, data-driven software that blends robust AI engineering with elegant user experiences. Leveraging a deep background in multimodal models, computer vision, and full-stack development, I deploy systems that range from award-winning software solutions to high-performance web ecosystems. I care about writing maintainable code, optimizing performance, and engineering tools that matter.
-      </p>
-      <div class="hero-ctas">
-        <a href="#projects" class="btn btn-primary">See my work ↓</a>
-        <a href="#contact" class="btn btn-outline">Get in touch</a>
+    <!-- HERO -->
+    <div id="hero">
+      <div class="hero-text">
+        <span class="hero-eyebrow"
+          >SOFTWARE ENGINEER • AI & MACHINE LEARNING</span
+        >
+        <h1 class="hero-name">Hi, I'm<br /><em>Tam Chun Hoi</em></h1>
+        <p class="hero-bio">
+          I build intelligent, data-driven software that blends robust AI
+          engineering with elegant user experiences. Leveraging a deep
+          background in multimodal models, computer vision, and full-stack
+          development, I deploy systems that range from award-winning
+          applications to high-performance web ecosystems. I care about writing
+          maintainable code, optimizing performance, and engineering tools that
+          matter.
+        </p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">See my work ↓</a>
+          <a href="#contact" class="btn btn-outline">Get in touch</a>
+        </div>
       </div>
-    </div>
 
-    <!--
+      <!--
       PROFILE PHOTO
       ─────────────
       Replace the src with your actual photo path: images/profile/photo.jpg
       The placeholder text shows if the image file is missing.
     -->
-    <div class="hero-img-wrap">
-      <img
-        class="hero-img"
-        src="images/profile/photo.jpg"
-        alt="Tam Chun Hoi"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-      />
-      <div class="hero-img-placeholder" style="display:none;">
-        Add your photo to<br><code>images/profile/photo.jpg</code>
+      <div class="hero-img-wrap">
+        <img
+          class="hero-img"
+          src="images/profile/photo.jpg"
+          alt="Tam Chun Hoi"
+          onerror="
+            this.style.display = 'none';
+            this.nextElementSibling.style.display = 'flex';
+          "
+        />
+        <div class="hero-img-placeholder" style="display: none">
+          Add your photo to<br /><code>images/profile/photo.jpg</code>
+        </div>
+        <div class="hero-deco"></div>
       </div>
-      <div class="hero-deco"></div>
     </div>
-  </div>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="inner">
-      <div>
-        <div class="section-label">About me</div>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="inner">
+        <div>
+          <div class="section-label">About me</div>
+          <div class="section-divider"></div>
+          <h2 class="section-title">A bit about<br />who I am</h2>
+          <p
+            style="
+              color: var(--ink-muted);
+              line-height: 1.85;
+              font-size: 0.97rem;
+              margin-bottom: 1.2rem;
+            "
+          >
+            I am a software engineer with 4+ years of experience building
+            full-stack software applications. I started coding because I love
+            making things — and I have never stopped. I believe the best
+            software is built with empathy for the user, care for the codebase,
+            and a healthy amount of curiosity.
+          </p>
+          <p
+            style="
+              color: var(--ink-muted);
+              line-height: 1.85;
+              font-size: 0.97rem;
+            "
+          >
+            Outside of work I enjoy
+            <strong style="font-weight: 500; color: var(--ink)"
+              >exploring new technologies</strong
+            >,
+            <strong style="font-weight: 500; color: var(--ink)"
+              >attending academic talks</strong
+            >, and tinkering with side projects. I am always happy to talk about
+            tech, ideas, or anything in between.
+          </p>
+        </div>
+        <div class="about-facts">
+          <div class="fact">
+            <div class="fact-icon terra">📍</div>
+            <div>
+              <div class="fact-label">Location</div>
+              <div class="fact-value">London, UK (open to remote)</div>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="fact-icon sage">🎓</div>
+            <div>
+              <div class="fact-label">Education</div>
+              <div class="fact-value">
+                <strong style="font-weight: 500; color: var(--ink)"
+                  >MSc Digital Manufacturing of Advanced Materials</strong
+                >
+                <br />University College London (Distinction & Dean's List)
+              </div>
+              <div class="fact-value">
+                <strong style="font-weight: 500; color: var(--ink)"
+                  >BEng Computer Engineering</strong
+                >
+                <br />The University of Hong Kong (2:1 Honours)
+              </div>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="fact-icon gold">💼</div>
+            <div>
+              <div class="fact-label">Experience</div>
+              <div class="fact-value">
+                4 years · Full-stack ML Development (computer vision, multimodal
+                language models, mobile app development)
+              </div>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="fact-icon terra">🌱</div>
+            <div>
+              <div class="fact-label">Currently learning</div>
+              <div class="fact-value">
+                Dart, Distributed systems, Reinforcement learning
+              </div>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="fact-icon sage">💬</div>
+            <div>
+              <div class="fact-label">Languages</div>
+              <div class="fact-value">
+                English (native), Mandarin (native), Cantonese (native),
+                Japanese (proficient)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-label">What I work with</div>
+      <div class="section-divider"></div>
+      <h2 class="section-title">Skills &amp; tools</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-card-icon">💻</div>
+          <h3>Programming Languages</h3>
+          <p style="font-size: 0.83rem; color: var(--ink-muted)">
+            The languages I think and build in
+          </p>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">TypeScript</span>
+            <span class="tag">JavaScript</span><span class="tag">Kotlin</span>
+            <span class="tag">Swift</span><span class="tag">C++</span>
+            <span class="tag">C#</span><span class="tag">HTML5/CSS3</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-icon">🤖</div>
+          <h3>AI &amp; Machine Learning</h3>
+          <p style="font-size: 0.83rem; color: var(--ink-muted)">
+            From model training to production deployment
+          </p>
+          <div class="skill-tags">
+            <span class="tag">TensorFlow</span><span class="tag">PyTorch</span>
+            <span class="tag">YOLOv8</span><span class="tag">Hugging Face</span>
+            <span class="tag">MediaPipe</span><span class="tag">OpenCV</span>
+            <span class="tag">LLM Fine-tuning</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-icon">📱</div>
+          <h3>Frontend &amp; Mobile</h3>
+          <p style="font-size: 0.83rem; color: var(--ink-muted)">
+            Cross-platform apps and responsive interfaces
+          </p>
+          <div class="skill-tags">
+            <span class="tag">React Native</span
+            ><span class="tag">TypeScript</span> <span class="tag">Kotlin</span
+            ><span class="tag">Swift</span> <span class="tag">.NET MAUI</span
+            ><span class="tag">HTML5/CSS3</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-icon">🔧</div>
+          <h3>Backend &amp; APIs</h3>
+          <p style="font-size: 0.83rem; color: var(--ink-muted)">
+            Server-side logic, databases, and integrations
+          </p>
+          <div class="skill-tags">
+            <span class="tag">Django</span><span class="tag">REST APIs</span>
+            <span class="tag">SQLite</span><span class="tag">Node-RED</span>
+            <span class="tag">Appwrite</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-icon">📊</div>
+          <h3>Data Science &amp; Research</h3>
+          <p style="font-size: 0.83rem; color: var(--ink-muted)">
+            From raw data to publishable insights
+          </p>
+          <div class="skill-tags">
+            <span class="tag">Pandas</span><span class="tag">NumPy</span>
+            <span class="tag">Matplotlib</span><span class="tag">SciPy</span>
+            <span class="tag">MATLAB</span><span class="tag">Seaborn</span>
+            <span class="tag">Statistics</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-icon">☁️</div>
+          <h3>Cloud &amp; DevOps</h3>
+          <p style="font-size: 0.83rem; color: var(--ink-muted)">
+            Deploy fast, ship confidently
+          </p>
+          <div class="skill-tags">
+            <span class="tag">AWS</span><span class="tag">GCP</span>
+            <span class="tag">Docker</span><span class="tag">Git/GitHub</span>
+            <span class="tag">CI/CD</span><span class="tag">Agile/Scrum</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-icon">🔌</div>
+          <h3>Embedded &amp; IoT</h3>
+          <p style="font-size: 0.83rem; color: var(--ink-muted)">
+            Hardware integration and real-time systems
+          </p>
+          <div class="skill-tags">
+            <span class="tag">Arduino</span
+            ><span class="tag">Raspberry Pi</span>
+            <span class="tag">NVIDIA Jetson</span><span class="tag">MQTT</span>
+            <span class="tag">Bluetooth/RFID</span
+            ><span class="tag">LabVIEW</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-icon">🤝</div>
+          <h3>Soft Skills</h3>
+          <p style="font-size: 0.83rem; color: var(--ink-muted)">
+            The things that matter in teams
+          </p>
+          <div class="skill-tags">
+            <span class="tag">Mentorship</span
+            ><span class="tag">Technical Writing</span>
+            <span class="tag">Cross-functional Collaboration</span>
+            <span class="tag">Trilingual</span
+            ><span class="tag">Presentations</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-label">Things I have built</div>
+      <div class="section-divider"></div>
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div
+            class="project-thumb"
+            style="background: var(--terracotta-light)"
+          >
+            <img
+              src="images/projects/healthai.png"
+              alt="HealthAI screenshot"
+              onerror="this.remove()"
+            />
+            <span class="project-thumb-icon">🏃</span>
+          </div>
+          <div class="project-body">
+            <span class="project-chip chip-terra">AI · Mobile</span>
+            <h3 class="project-title">HealthAI</h3>
+            <p class="project-desc">
+              An Android health app using MediaPipe for real-time human pose
+              estimation and a self-trained kNN classifier for exercise
+              tracking. Also captures PPG signals via the smartphone camera for
+              pulse monitoring, with a local SQLite database for activity
+              history.
+            </p>
+            <div class="project-tech">
+              <span class="tag">Kotlin</span><span class="tag">MediaPipe</span>
+              <span class="tag">kNN</span><span class="tag">SQLite</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/adriantam38/HealthAI" target="_blank"
+                >GitHub ↗</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb" style="background: var(--sage-light)">
+            <img
+              src="images/projects/rockclimbing.png"
+              alt="Rock Climbing Motion Analysis screenshot"
+              onerror="this.remove()"
+            />
+            <span class="project-thumb-icon">🧗</span>
+          </div>
+          <div class="project-body">
+            <span class="project-chip chip-sage">Computer Vision</span>
+            <h3 class="project-title">Rock Climbing Motion Analysis</h3>
+            <p class="project-desc">
+              A real-time desktop application that overlays skeletal tracking
+              onto live video to analyse climbing technique. Tracks 33 body
+              landmarks via MediaPipe Pose, with session management, dynamic UI
+              scaling, keypad input support, and multi-language localisation.
+            </p>
+            <div class="project-tech">
+              <span class="tag">Python</span><span class="tag">OpenCV</span>
+              <span class="tag">MediaPipe</span><span class="tag">Tkinter</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://github.com/adriantam38/RockClimbing-Mediapipe"
+                target="_blank"
+                >GitHub ↗</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb" style="background: var(--gold-light)">
+            <img
+              src="images/projects/habittracker.png"
+              alt="Habit Tracker screenshot"
+              onerror="this.remove()"
+            />
+            <span class="project-thumb-icon">📅</span>
+          </div>
+          <div class="project-body">
+            <span class="project-chip chip-gold">Full-stack · Mobile</span>
+            <h3 class="project-title">Habit Tracker</h3>
+            <p class="project-desc">
+              A full-stack cross-platform mobile app for building daily habits.
+              Features real-time streak tracking, habit management, user
+              authentication, and a user-friendly UI — all backed by Appwrite's
+              live database and auth services.
+            </p>
+            <div class="project-tech">
+              <span class="tag">React Native</span
+              ><span class="tag">TypeScript</span>
+              <span class="tag">Appwrite</span><span class="tag">Expo</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://github.com/adriantam38/HabitTracker"
+                target="_blank"
+                >GitHub ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="inner">
+        <div class="section-label">Where I have worked</div>
         <div class="section-divider"></div>
-        <h2 class="section-title">A bit about<br>who I am</h2>
-        <p style="color: var(--ink-muted); line-height: 1.85; font-size: 0.97rem; margin-bottom: 1.2rem;">
-          I'm a software engineer with X years of experience building full-stack web applications. I started coding
-          because I love making things — and I've never stopped. I believe the best software is built with empathy for
-          the user, care for the codebase, and a healthy amount of curiosity.
-        </p>
-        <p style="color: var(--ink-muted); line-height: 1.85; font-size: 0.97rem;">
-          Outside of work I enjoy <strong style="font-weight:500; color:var(--ink);">hiking</strong>,
-          <strong style="font-weight:500; color:var(--ink);">reading sci-fi</strong>, and tinkering with side projects.
-          I'm always happy to talk about tech, ideas, or anything in between.
-        </p>
-      </div>
-      <div class="about-facts">
-        <div class="fact">
-          <div class="fact-icon terra">📍</div>
-          <div>
-            <div class="fact-label">Location</div>
-            <div class="fact-value">London, UK (open to remote)</div>
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="tl-date">May 2024 – Jul 2024</div>
+            <div class="tl-role">AI Systems Developer</div>
+            <div class="tl-company">
+              Hong Kong Univisual Intelligent Technology
+            </div>
+            <ul class="tl-desc">
+              <li>
+                Trained YOLOv8 models on NVIDIA Jetson AGX Orin for fitness
+                tracking, deployed across 106 schools via RoboCoach3.0 — a React
+                Native app with 100k+ downloads.
+              </li>
+              <li>
+                Designed LapRunner, an RFID &amp; Bluetooth lap tracking system
+                achieving 0.82 accuracy while cutting hardware costs by 47%.
+              </li>
+              <li>
+                Iterated on model performance with Agile teams using real-world
+                feedback from schools and end-users.
+              </li>
+              <li>
+                Mentored interns on SDLC, coding best practices, and ML model
+                training.
+              </li>
+            </ul>
           </div>
-        </div>
-        <div class="fact">
-          <div class="fact-icon sage">🎓</div>
-          <div>
-            <div class="fact-label">Education</div>
-            <div class="fact-value">BSc Computer Science, University of X</div>
-          </div>
-        </div>
-        <div class="fact">
-          <div class="fact-icon gold">💼</div>
-          <div>
-            <div class="fact-label">Experience</div>
-            <div class="fact-value">X years · Full-stack engineering</div>
-          </div>
-        </div>
-        <div class="fact">
-          <div class="fact-icon terra">🌱</div>
-          <div>
-            <div class="fact-label">Currently learning</div>
-            <div class="fact-value">Rust, distributed systems, ML basics</div>
-          </div>
-        </div>
-        <div class="fact">
-          <div class="fact-icon sage">💬</div>
-          <div>
-            <div class="fact-label">Languages</div>
-            <div class="fact-value">English (native), Spanish (conversational)</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-label">What I work with</div>
-    <div class="section-divider"></div>
-    <h2 class="section-title">Skills &amp; tools</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-card-icon">⚡</div>
-        <h3>Frontend</h3>
-        <p style="font-size:0.83rem;color:var(--ink-muted);">Building responsive, accessible interfaces</p>
-        <div class="skill-tags">
-          <span class="tag">React</span><span class="tag">TypeScript</span>
-          <span class="tag">Next.js</span><span class="tag">CSS</span><span class="tag">Tailwind</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-icon">🔧</div>
-        <h3>Backend</h3>
-        <p style="font-size:0.83rem;color:var(--ink-muted);">APIs, databases, and server-side logic</p>
-        <div class="skill-tags">
-          <span class="tag">Node.js</span><span class="tag">Python</span>
-          <span class="tag">PostgreSQL</span><span class="tag">REST</span><span class="tag">GraphQL</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-icon">☁️</div>
-        <h3>Cloud &amp; DevOps</h3>
-        <p style="font-size:0.83rem;color:var(--ink-muted);">Deploy fast, ship confidently</p>
-        <div class="skill-tags">
-          <span class="tag">AWS</span><span class="tag">Docker</span>
-          <span class="tag">GitHub Actions</span><span class="tag">Terraform</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-icon">🧪</div>
-        <h3>Testing &amp; Quality</h3>
-        <p style="font-size:0.83rem;color:var(--ink-muted);">Code that I'm confident shipping</p>
-        <div class="skill-tags">
-          <span class="tag">Jest</span><span class="tag">Playwright</span>
-          <span class="tag">Vitest</span><span class="tag">TDD</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-icon">🤝</div>
-        <h3>Soft skills</h3>
-        <p style="font-size:0.83rem;color:var(--ink-muted);">The things that matter in teams</p>
-        <div class="skill-tags">
-          <span class="tag">Code review</span><span class="tag">Mentoring</span>
-          <span class="tag">Documentation</span><span class="tag">Agile</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-icon">🛠️</div>
-        <h3>Tooling</h3>
-        <p style="font-size:0.83rem;color:var(--ink-muted);">The everyday setup</p>
-        <div class="skill-tags">
-          <span class="tag">Git</span><span class="tag">VS Code</span>
-          <span class="tag">Figma</span><span class="tag">Linear</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="section-label">Things I've built</div>
-    <div class="section-divider"></div>
-    <h2 class="section-title">Projects</h2>
-    <div class="projects-grid">
-
-      <!--
-        PROJECT THUMBNAIL IMAGES
-        ─────────────────────────
-        Each .project-thumb contains an <img> pointing to images/projects/*.
-        If the file is missing the coloured background + emoji remain as a fallback.
-        Swap the src to your actual screenshot or cover art.
-      -->
-
-      <div class="project-card">
-        <div class="project-thumb" style="background: var(--terracotta-light);">
-          <img
-            src="images/projects/project-one.jpg"
-            alt="Project One screenshot"
-            onerror="this.remove();"
-          />
-          <span class="project-thumb-icon">🌿</span>
-        </div>
-        <div class="project-body">
-          <span class="project-chip chip-terra">Full-stack</span>
-          <h3 class="project-title">Project One</h3>
-          <p class="project-desc">A short description of what this project does, the problem it solves, and why you built it.</p>
-          <div class="project-tech">
-            <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="tl-date">Jun 2023 – Jul 2023</div>
+            <div class="tl-role">Software Engineer</div>
+            <div class="tl-company">Remobility Limited</div>
+            <ul class="tl-desc">
+              <li>
+                Contributed to SmartRehab, an AI telerehabilitation app for
+                post-stroke motor recovery — awarded Gold Medal with
+                Congratulations of the Jury at the 49th Geneva International
+                Exhibition of Inventions 2024.
+              </li>
+              <li>
+                Designed and executed test cases for pose-driven interactions,
+                session compliance logging, and performance metrics.
+              </li>
+              <li>
+                Supported clinical pilot trials with usability testing,
+                compatibility checks, and data privacy validation.
+              </li>
+            </ul>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/yourusername/project-one" target="_blank">GitHub ↗</a>
-            <a href="https://project-one.com" target="_blank">Live demo ↗</a>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="tl-date">May 2022 – Aug 2023</div>
+            <div class="tl-role">Research Assistant</div>
+            <div class="tl-company">
+              Sport AI Laboratory, University of Hong Kong
+            </div>
+            <ul class="tl-desc">
+              <li>
+                Built computer vision pipelines for rock climbing and drowning
+                detection using OpenCV and MediaPipe, processing 30+ hours of
+                footage and 9,000+ labelled images.
+              </li>
+              <li>
+                Developed a Django-based inventory management system with
+                real-time sync to a .NET MAUI cross-platform mobile app.
+              </li>
+              <li>
+                Designed IoT alarm systems using MQTT and BLE for low-latency
+                real-time alerts triggered by object detection events.
+              </li>
+              <li>
+                Collaborated with athletes, lifeguards, and doctors to deliver a
+                drowning detection system for Hong Kong's Leisure and Cultural
+                Services Department.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="tl-date">Jun 2021 – Aug 2021</div>
+            <div class="tl-role">
+              Electronics &amp; Electrical Engineering Intern
+            </div>
+            <div class="tl-company">
+              International Fuel Injection Management Technology Limited
+            </div>
+            <ul class="tl-desc">
+              <li>
+                Built a LabVIEW data acquisition system for real-time sensor
+                monitoring, automating anomaly detection and reducing manual
+                diagnostic time by 25%.
+              </li>
+              <li>
+                Modelled diesel combustion cycles using NI-DAQmx data,
+                quantifying effects of rail pressure and injector timing on
+                performance.
+              </li>
+              <li>
+                Prototyped PID control logic and outlined a digital twin
+                approach for test automation.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="project-card">
-        <div class="project-thumb" style="background: var(--sage-light);">
-          <img
-            src="images/projects/project-two.jpg"
-            alt="Project Two screenshot"
-            onerror="this.remove();"
-          />
-          <span class="project-thumb-icon">📊</span>
-        </div>
-        <div class="project-body">
-          <span class="project-chip chip-sage">API / Backend</span>
-          <h3 class="project-title">Project Two</h3>
-          <p class="project-desc">What makes this interesting? Talk about a technical challenge you overcame, or the user impact.</p>
-          <div class="project-tech">
-            <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Redis</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/yourusername/project-two" target="_blank">GitHub ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-thumb" style="background: var(--gold-light);">
-          <img
-            src="images/projects/project-three.jpg"
-            alt="Project Three screenshot"
-            onerror="this.remove();"
-          />
-          <span class="project-thumb-icon">🛰️</span>
-        </div>
-        <div class="project-body">
-          <span class="project-chip chip-gold">Open source</span>
-          <h3 class="project-title">Project Three</h3>
-          <p class="project-desc">Maybe an open source contribution, a CLI tool, or a library. What does it do and who finds it useful?</p>
-          <div class="project-tech">
-            <span class="tag">TypeScript</span><span class="tag">CLI</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/yourusername/project-three" target="_blank">GitHub ↗</a>
-            <a href="https://npm.im/project-three" target="_blank">npm ↗</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="inner">
-      <div class="section-label">Where I've worked</div>
-      <div class="section-divider"></div>
-      <h2 class="section-title">Experience</h2>
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="tl-date">2023 – Present</div>
-          <div class="tl-role">Senior Software Engineer</div>
-          <div class="tl-company">Company Name</div>
-          <p class="tl-desc">What did you build? What was the team like? Mention scale, impact, or a specific problem you're proud of solving.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="tl-date">2021 – 2023</div>
-          <div class="tl-role">Software Engineer</div>
-          <div class="tl-company">Previous Company</div>
-          <p class="tl-desc">Another chapter. What did you grow into here? Cross-functional work, mentorship, or something you shipped that you're proud of.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="tl-date">2019 – 2021</div>
-          <div class="tl-role">Junior Engineer</div>
-          <div class="tl-company">First Company</div>
-          <p class="tl-desc">Where it all started. Talk about what you learned, who you learned from, or a moment that shaped how you work.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- LINKEDIN POSTS -->
-  <section id="posts" style="background: var(--warm-white); max-width: 100%; padding: 6rem 0;">
-    <div style="max-width: 1100px; margin: 0 auto; padding: 0 3rem;">
-      <div class="section-label">Thinking out loud</div>
-      <div class="section-divider"></div>
-      <h2 class="section-title">From LinkedIn</h2>
-      <div class="posts-grid">
-
-        <!--
+    <!-- LINKEDIN POSTS -->
+    <section
+      id="posts"
+      style="background: var(--warm-white); max-width: 100%; padding: 6rem 0"
+    >
+      <div style="max-width: 1100px; margin: 0 auto; padding: 0 3rem">
+        <div class="section-label">Thinking out loud</div>
+        <div class="section-divider"></div>
+        <h2 class="section-title">From LinkedIn</h2>
+        <div class="posts-grid">
+          <!--
           LINKEDIN POST CARDS
           ────────────────────
           Each card has two optional image slots:
@@ -731,152 +1294,246 @@
                               Falls back to your initials if the image is missing.
         -->
 
-        <!-- POST 1 -->
-        <div class="post-card">
-          <!-- Cover image (optional — delete this block if unused) -->
-          <div class="post-cover" id="post-cover-1">
-            <img
-              src="images/posts/post-1.jpg"
-              alt="Post 1 cover"
-              onload="document.getElementById('post-cover-1').classList.remove('empty');"
-              onerror="document.getElementById('post-cover-1').classList.add('empty');"
-            />
-          </div>
-          <div class="post-meta">
-            <div class="post-avatar">
+          <!-- POST 1 -->
+          <div class="post-card">
+            <!-- Cover image (optional — delete this block if unused) -->
+            <div class="post-cover" id="post-cover-1">
               <img
-                src="images/profile/photo.jpg"
-                alt="Tam Chun Hoi"
-                onerror="this.style.display='none';"
+                src="images/posts/post-1.jpeg"
+                alt="Post 1 cover"
+                onload="
+                  document
+                    .getElementById('post-cover-1')
+                    .classList.remove('empty')
+                "
+                onerror="
+                  document.getElementById('post-cover-1').classList.add('empty')
+                "
               />
-              <span>TCH</span>
             </div>
-            <div>
-              <div class="post-author">Tam Chun Hoi</div>
-              <div class="post-date">June 2025</div>
+            <div class="post-meta">
+              <div class="post-avatar">
+                <img
+                  src="images/profile_linkedin/photo.jpeg"
+                  alt="Tam Chun Hoi"
+                  onerror="this.style.display = 'none'"
+                />
+              </div>
+              <div>
+                <div class="post-author">Tam Chun Hoi</div>
+                <div class="post-date">May 2025</div>
+              </div>
+            </div>
+            <span class="post-topic">Academic</span>
+            <p class="post-body">
+              If you told me a year ago how much could change in 12 months, I
+              wouldn't have believed you. 🏛️✨ Today, walking across the stage
+              at the Royal Festival Hall in Southbank Centre, I officially
+              closed out my chapter at UCL and UCL Chemical Engineering,
+              graduating with my MSc in Digital Manufacturing of Advanced
+              Materials with Distinction and Dean's List 🎓 . This degree has
+              been a masterclass in resilience, systemic thinking, and
+              innovation. From decoding complex material behaviours to
+              architecture-level automation and digital workflows. The learning
+              curve was steep, but the reward has been massive. I owe a massive
+              debt of gratitude to my incredible professors and advisors. Thank
+              you for constantly challenging my assumptions, sharing your
+              immense expertise, and guiding me to push the boundaries of what
+              is possible in modern engineering. To my incredible fellow grads:
+              we actually did it. And to my family and friends: I couldn't have
+              crossed this finish line without your unwavering support. I am
+              excited to carry this momentum into the industry and help bridge
+              the gap between advanced materials and digital intelligence. The
+              next chapter starts now! 🚀🥂 hashtag#UCL hashtag#UCLGrad
+              hashtag#ChemicalEngineering hashtag#MachineLearning
+              hashtag#MastersDegree hashtag#Distinction hashtag#DeansList
+              hashtag#ClassOf2025 hashtag#AcademicAchievement
+            </p>
+            <div class="post-footer">
+              <span class="post-reactions">👍 19 reactions</span>
+              <a
+                href="https://www.linkedin.com/posts/chun-hoi-tam-a12526209_ucl-uclgrad-chemicalengineering-activity-7462959578108882944-Ua6L?utm_source=share&utm_medium=member_desktop&rcm=ACoAADTv3C4BPfCkZeljOtBrB4UJlG5swOa_z30"
+                target="_blank"
+                class="post-link"
+                >Read on LinkedIn ↗</a
+              >
             </div>
           </div>
-          <span class="post-topic">Career</span>
-          <p class="post-body">
-            Paste the text of your LinkedIn post here. Keep it to the opening lines — enough to hook someone in.
-            The card will clip it automatically after 6 lines.
-          </p>
-          <div class="post-footer">
-            <span class="post-reactions">👍 142 reactions</span>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" class="post-link">Read on LinkedIn ↗</a>
+
+          <!-- POST 2 -->
+          <div class="post-card">
+            <div class="post-cover" id="post-cover-2">
+              <img
+                src="images/posts/post-2.jpeg"
+                alt="Post 2 cover"
+                onload="
+                  document
+                    .getElementById('post-cover-2')
+                    .classList.remove('empty')
+                "
+                onerror="
+                  document.getElementById('post-cover-2').classList.add('empty')
+                "
+              />
+            </div>
+            <div class="post-meta">
+              <div class="post-avatar">
+                <img
+                  src="images/profile_linkedin/photo.jpeg"
+                  alt="Tam Chun Hoi"
+                  onerror="this.style.display = 'none'"
+                />
+              </div>
+              <div>
+                <div class="post-author">Tam Chun Hoi</div>
+                <div class="post-date">April 2025</div>
+              </div>
+            </div>
+            <span class="post-topic">Engineering</span>
+            <p class="post-body">
+              I spent yesterday at the Flower Labs Flower AI Summit 2026, and
+              the technical progress in Federated Learning of Large Language
+              Model is staggering. It has become increasingly evident that the
+              industry is pivoting away from the limitations of centralised data
+              silos in favour of decentralised, privacy-preserving architectures
+              that prioritise data sovereignty without sacrificing computational
+              performance. My gratitude to Daniel J. Beutel, Nicholas Lane, and
+              the entire Flower Labs team for cultivating such a
+              forward-thinking environment. Engaging with S M Ruhul Kabir
+              Howlader and Davide Cantoro further highlighted the collective
+              drive to transform these privacy-preserving frameworks into a
+              global standard for responsible innovation. We are witnessing the
+              dawn of an era where intelligence is distributed, secure, and
+              truly sovereign. hashtag#FlowerAISummit2026
+              hashtag#FederatedLearning hashtag#AI hashtag#DataSovereignty
+              hashtag#Innovation
+            </p>
+            <div class="post-footer">
+              <span class="post-reactions">👍 25 reactions</span>
+              <a
+                href="https://www.linkedin.com/posts/chun-hoi-tam-a12526209_floweraisummit2026-federatedlearning-ai-activity-7450634457826410496-RJPI?utm_source=share&utm_medium=member_desktop&rcm=ACoAADTv3C4BPfCkZeljOtBrB4UJlG5swOa_z30"
+                target="_blank"
+                class="post-link"
+                >Read on LinkedIn ↗</a
+              >
+            </div>
+          </div>
+
+          <!-- POST 3 -->
+          <div class="post-card">
+            <div class="post-cover" id="post-cover-3">
+              <img
+                src="images/posts/post-3.jpeg"
+                alt="Post 3 cover"
+                onload="
+                  document
+                    .getElementById('post-cover-3')
+                    .classList.remove('empty')
+                "
+                onerror="
+                  document.getElementById('post-cover-3').classList.add('empty')
+                "
+              />
+            </div>
+            <div class="post-meta">
+              <div class="post-avatar">
+                <img
+                  src="images/profile_linkedin/photo.jpeg"
+                  alt="Tam Chun Hoi"
+                  onerror="this.style.display = 'none'"
+                />
+              </div>
+              <div>
+                <div class="post-author">Tam Chun Hoi</div>
+                <div class="post-date">February 2025</div>
+              </div>
+            </div>
+            <span class="post-topic">Career</span>
+            <p class="post-body">
+              I was honored to present my Master's research, “Large Language
+              Models to Characterize Metal‑Organic Framework (MOF) Structures,”
+              to the Advanced Propulsion, Digital Manufacturing of Advanced
+              Materials and Nature-Inspired Solutions MSc cohorts at UCL East
+              yesterday. 🧑‍🏫 Huge thanks to Professor Solomon Bawa for the
+              invitation and for organizing such a welcoming session. I am
+              grateful for the opportunity to share my personal academic
+              journey, research experiences, and future directions as a UCL
+              alumnus. I hope everyone who attended found the session
+              informative and that their questions on MSc research were fully
+              addressed. 🎯 I am excited to keep collaborating with academia and
+              industry partners to translate these findings into practical tools
+              that accelerate materials discovery through AI integration. 🔁💡
+            </p>
+            <div class="post-footer">
+              <span class="post-reactions">👍 16 reactions</span>
+              <a
+                href="https://www.linkedin.com/posts/chun-hoi-tam-a12526209_i-was-honored-to-present-my-masters-research-activity-7423361459453296640-FPMh?utm_source=share&utm_medium=member_desktop&rcm=ACoAADTv3C4BPfCkZeljOtBrB4UJlG5swOa_z30"
+                target="_blank"
+                class="post-link"
+                >Read on LinkedIn ↗</a
+              >
+            </div>
           </div>
         </div>
-
-        <!-- POST 2 -->
-        <div class="post-card">
-          <div class="post-cover" id="post-cover-2">
-            <img
-              src="images/posts/post-2.jpg"
-              alt="Post 2 cover"
-              onload="document.getElementById('post-cover-2').classList.remove('empty');"
-              onerror="document.getElementById('post-cover-2').classList.add('empty');"
-            />
-          </div>
-          <div class="post-meta">
-            <div class="post-avatar">
-              <img
-                src="images/profile/photo.jpg"
-                alt="Tam Chun Hoi"
-                onerror="this.style.display='none';"
-              />
-              <span>TCH</span>
-            </div>
-            <div>
-              <div class="post-author">Tam Chun Hoi</div>
-              <div class="post-date">May 2025</div>
-            </div>
-          </div>
-          <span class="post-topic">Engineering</span>
-          <p class="post-body">
-            Paste your second post here. A technical insight, a lesson learned, or something you shipped.
-            These tend to perform well and show your depth as an engineer.
-          </p>
-          <div class="post-footer">
-            <span class="post-reactions">👍 89 reactions</span>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" class="post-link">Read on LinkedIn ↗</a>
-          </div>
-        </div>
-
-        <!-- POST 3 -->
-        <div class="post-card">
-          <div class="post-cover" id="post-cover-3">
-            <img
-              src="images/posts/post-3.jpg"
-              alt="Post 3 cover"
-              onload="document.getElementById('post-cover-3').classList.remove('empty');"
-              onerror="document.getElementById('post-cover-3').classList.add('empty');"
-            />
-          </div>
-          <div class="post-meta">
-            <div class="post-avatar">
-              <img
-                src="images/profile/photo.jpg"
-                alt="Tam Chun Hoi"
-                onerror="this.style.display='none';"
-              />
-              <span>TCH</span>
-            </div>
-            <div>
-              <div class="post-author">Tam Chun Hoi</div>
-              <div class="post-date">April 2025</div>
-            </div>
-          </div>
-          <span class="post-topic">Mindset</span>
-          <p class="post-body">
-            Your third post. Maybe something more personal — a reflection, a milestone, or a piece of advice
-            you wish someone had given you earlier in your career.
-          </p>
-          <div class="post-footer">
-            <span class="post-reactions">👍 210 reactions</span>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" class="post-link">Read on LinkedIn ↗</a>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="inner">
-      <div class="section-label">Say hello</div>
-      <h2 class="section-title" style="color:#fff; margin-bottom:1rem;">Let's work together</h2>
-      <p>I'm always open to interesting conversations — whether that's a new role, a collaboration, or just a chat about something you're building.</p>
-      <div class="contact-links">
-        <a href="mailto:you@example.com" class="contact-link cl-primary">✉️ Email me</a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link cl-ghost">LinkedIn ↗</a>
-        <a href="https://github.com/yourusername" target="_blank" class="contact-link cl-ghost">GitHub ↗</a>
-        <a href="/your-cv.pdf" class="contact-link cl-ghost">Download CV ↗</a>
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="inner">
+        <div class="section-label">Say hello</div>
+        <h2 class="section-title" style="color: #fff; margin-bottom: 1rem">
+          Let's work together
+        </h2>
+        <p>
+          I'm always open to interesting conversations — whether that's a new
+          role, a collaboration, or just a chat about something you're building.
+        </p>
+        <div class="contact-links">
+          <a
+            href="mailto:adriantam0308@gmail.com"
+            class="contact-link cl-primary"
+            >✉️ Email me</a
+          >
+          <a
+            href="https://www.linkedin.com/in/chun-hoi-tam-a12526209/"
+            target="_blank"
+            class="contact-link cl-ghost"
+            >LinkedIn ↗</a
+          >
+          <a
+            href="https://github.com/adriantam38"
+            target="_blank"
+            class="contact-link cl-ghost"
+            >GitHub ↗</a
+          >
+          <!-- <a href="/your-cv.pdf" class="contact-link cl-ghost">Download CV ↗</a> -->
+        </div>
+        <p class="footer-note">Made with care · © 2026 Tam Chun Hoi</p>
       </div>
-      <p class="footer-note">Made with care · © 2026 Tam Chun Hoi</p>
-    </div>
-  </section>
+    </section>
 
-  <script>
-    /*
+    <script>
+      /*
       Project thumbnail behaviour:
       Once a real image loads successfully, hide the emoji icon so it doesn't overlap.
     */
-    document.querySelectorAll('.project-thumb img').forEach(img => {
-      img.addEventListener('load', () => {
-        const icon = img.closest('.project-thumb').querySelector('.project-thumb-icon');
-        if (icon) icon.style.display = 'none';
+      document.querySelectorAll(".project-thumb img").forEach((img) => {
+        img.addEventListener("load", () => {
+          const icon = img
+            .closest(".project-thumb")
+            .querySelector(".project-thumb-icon");
+          if (icon) icon.style.display = "none";
+        });
       });
-    });
 
-    /*
+      /*
       Post cover: default to hidden; shown only if the image loads.
       (Handled via onload/onerror inline attributes above.)
     */
-    document.querySelectorAll('.post-cover').forEach(el => {
-      el.classList.add('empty');
-    });
-  </script>
-
-</body>
+      document.querySelectorAll(".post-cover").forEach((el) => {
+        el.classList.add("empty");
+      });
+    </script>
+  </body>
 </html>
